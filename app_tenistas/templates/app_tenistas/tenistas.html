@@ -2,6 +2,10 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
+<h2>Lista de socios inscriptos en tenis</h2>
+<a class="card_custom" href="{% url 'TenisDjangoForms' %}">Inscribirse en tenis</a>
+<hr></hr>
+
     <ul>
         {% for tenis in tenis %}
             <li>

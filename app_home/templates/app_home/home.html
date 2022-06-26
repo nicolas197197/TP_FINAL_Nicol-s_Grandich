@@ -1,0 +1,66 @@
+{% extends "app_home/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<h2>Buscar deportista</h2>
+<hr></hr>
+
+<form action="/app_home/search" method="GET">
+    <div>
+        <input type="text" name="all_search_futbolistas" id="futbol_code_or_name" placeholder="Buscar futbolista">
+        <input type="submit" value="Buscar">
+    </div>
+    <div>
+        <input type="text" name="all_search_basquetbolistas" id="basquet_code_or_name" placeholder="Buscar basquetbolista">
+        <input type="submit" value="Buscar">
+    </div>
+    <div>
+        <input type="text" name="all_search_tenistas" id="tenis_code_or_name" placeholder="Buscar tenista">
+        <input type="submit" value="Buscar">
+    </div>
+
+
+</form>
+
+<hr></hr>
+
+{% if futbol %}
+    <ul>
+        {% for futbol in futbol %}
+            <li>
+                {{futbol.nombre}}
+            -- Socio N° {{futbol.numeroDeSocio }}
+            -- Ingreso: {{futbol.fechaDeIngreso}}
+            -- Mail: {{futbol.email}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if basquet %}
+    <ul>
+        {% for basquet in basquet %}
+            <li>
+                {{basquet.nombre}}
+            -- Socio N° {{basquet.numeroDeSocio }}
+            -- Ingreso: {{basquet.fechaDeIngreso}}
+            -- Mail: {{basquet.email}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if tenis %}
+    <ul>
+        {% for tenis in tenis %}
+            <li>
+                {{tenis.nombre}}
+            -- Socio N° {{tenis.numeroDeSocio }}
+            -- Ingreso: {{tenis.fechaDeIngreso}}
+            -- Mail: {{tenis.email}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}
