@@ -1,0 +1,22 @@
+{% extends "app_home/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<h2>Formulario para resgistrase en tenis</h2>
+<hr></hr>
+{% if tenis_form.errors %}
+    <p style="color: red">Por favor revisar los datos</p>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <table>
+        {{ tenis_form.as_table }}
+    </table>
+
+    <input type="submit" class="btn btn-primary" value="Registrar" />
+
+</form>
+
+{% endblock %}

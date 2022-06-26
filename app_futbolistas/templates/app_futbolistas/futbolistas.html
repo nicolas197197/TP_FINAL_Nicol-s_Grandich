@@ -2,6 +2,10 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
+<h2>Lista de socios inscriptos en fútbol</h2>
+<a class="card_custom" href="{% url 'FutbolDjangoForms' %}">Inscribirse en fútbol</a>
+<hr></hr>
+
     <ul>
         {% for futbol in futbol %}
             <li>

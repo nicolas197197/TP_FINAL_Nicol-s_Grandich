@@ -1,0 +1,22 @@
+{% extends "app_home/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<h2>Formulario para resgistrase en fútbol</h2>
+<hr></hr>
+{% if futbol_form.errors %}
+    <p style="color: red">Por favor revisar los datos</p>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <table>
+        {{ futbol_form.as_table }}
+    </table>
+
+    <input type="submit" class="btn btn-primary" value="Registrar" />
+
+</form>
+
+{% endblock %}

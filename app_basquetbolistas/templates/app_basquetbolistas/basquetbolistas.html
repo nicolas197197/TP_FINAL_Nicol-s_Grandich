@@ -2,6 +2,10 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
+<h2>Lista de socios inscriptos en basquet</h2>
+<a class="card_custom" href="{% url 'BasquetDjangoForms' %}">Inscribirse en basquet</a>
+<hr></hr>
+
     <ul>
         {% for basquet in basquet %}
             <li>
