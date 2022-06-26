@@ -1,0 +1,20 @@
+{% extends "app_home/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <ul>
+        {% for basquet in basquet %}
+            <li>
+                {{basquet.nombre}}
+                -- Socio N° {{basquet.numeroDeSocio }}
+                -- Ingreso: {{basquet.fechaDeIngreso}}
+                -- Mail: {{basquet.email}}
+            </li>
+        {% endfor %}
+    </ul>
+
+    
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "app_home/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <ul>
+        {% for tenis in tenis %}
+            <li>
+                {{tenis.nombre}}
+                -- Socio N° {{tenis.numeroDeSocio }}
+                -- Ingreso: {{tenis.fechaDeIngreso}}
+                -- Mail: {{tenis.email}}
+            </li>
+        {% endfor %}
+    </ul>
+
+    
+</body>
+</html>
+
+{% endblock %}
