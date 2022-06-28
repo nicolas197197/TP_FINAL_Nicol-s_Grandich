@@ -25,9 +25,13 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url '' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'futbolistas' %}">Futbolistas</a>
-                <a class="navbar-brand" href="{% url 'basquetbolistas' %}">Basquetbolistas</a>
+                <a class="navbar-brand" href="{% url 'basquet-list' %}">Basquetbolistas</a>
                 <a class="navbar-brand" href="{% url 'tenistas' %}">Tenistas</a>
-                <a class="btn btn-primary" href="#signup">Sign Up</a>
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary" href="{% url 'user-logout' %}">Cerrar Sesión</a>
+                {% else %}
+                <a class="btn btn-primary" href="{% url 'user-login' %}">Iniciar Sesión</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->
