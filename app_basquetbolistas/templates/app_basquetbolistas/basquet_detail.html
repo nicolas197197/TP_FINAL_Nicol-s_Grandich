@@ -1,0 +1,10 @@
+{% extends "app_home/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<h2>Detalle de basquet</h2>
+<hr></hr>
+<p><h3>{{basquet.nombre}}</h3></p>
+<p><h4>Socio N° {{basquet.numeroDeSocio }}</h4></p>
+<p><a class="btn2 btn-primary" href="{% url 'basquet-list' %}">Regresar a la lista de cursos</a></p>
+{% endblock %}

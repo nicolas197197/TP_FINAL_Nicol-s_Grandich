@@ -58,5 +58,42 @@ def basquet_forms_django(request):
     return render(
         request=request,
         context=context_dict,
-        template_name='app_basquetbolistas/basquet_forms_django.html'
+        template_name='app_basquetbolistas/basquet_django_forms.html'
     )
+
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
+class BasquetListView(ListView):
+    model = Basquet
+    template_name = "basquet_list.html"
+
+
+class BasquetDetailView(DetailView):
+    model = Basquet
+    template_name = "basquet_detail.html"
+
+
+class BasquetCreateView(CreateView):
+    model = Basquet
+    # template_name = "app_coder/course_form.html"
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('basquet-list')
+    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+
+
+class BasquetUpdateView(UpdateView):
+    model = Basquet
+    # template_name = "app_coder/course_form.html"
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('basquet-list')
+    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+
+
+class BasquetDeleteView(DeleteView):
+    model = Basquet
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('basquet-list')    
