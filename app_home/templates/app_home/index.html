@@ -28,6 +28,7 @@
                 <a class="navbar-brand" href="{% url 'basquet-list' %}">Basquetbolistas</a>
                 <a class="navbar-brand" href="{% url 'tenistas' %}">Tenistas</a>
                 {% if user.is_authenticated %}
+                <a class="btn btn-secondary" href="{% url 'user-update' %}">Editar usuario</a>
                 <a class="btn btn-primary" href="{% url 'user-logout' %}">Cerrar Sesión</a>
                 {% else %}
                 <a class="btn btn-primary" href="{% url 'user-login' %}">Iniciar Sesión</a>
