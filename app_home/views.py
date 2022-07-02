@@ -3,9 +3,25 @@ from app_futbolistas.models import Futbol
 from app_basquetbolistas.models import Basquet
 from app_tenistas.models import Tenis
 from django.db.models import Q
+from app_user.models import Avatar
+from app_user.forms import AvatarForm
 
 def index(request):
-    return render(request,"app_home/home.html")
+    avatar_ctx = get_avatar_url_ctx(request)
+    context_dict = {**avatar_ctx}
+    return render(
+        request=request,
+        context=context_dict,
+        template_name="app_home/home.html"
+    )
+
+
+def get_avatar_url_ctx(request):
+    avatars = Avatar.objects.filter(user=request.user.id)
+    if avatars.exists():
+        return {"url": avatars[0].image.url}
+    return {}
+
 
 def search(request):
     context_dict = dict()
@@ -41,3 +57,4 @@ def search(request):
         context=context_dict,
         template_name="app_home/home.html",
     )            
+

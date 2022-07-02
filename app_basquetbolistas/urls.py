@@ -5,8 +5,6 @@ from app_basquetbolistas import views
 
 urlpatterns = [
 path('in_basquetbolistas/<str:nombre>/<int:numeroDeSocio>/<fechaDeIngreso>/<str:email>', views.in_basquetbolistas),
-#path('basquetbolistas/', views.basquetbolistas, name='basquetbolistas'),
-path('basquet-django-forms', views.basquet_forms_django, name='BasquetDjangoForms'),
 path('basquet', views.BasquetListView.as_view(), name='basquet-list'),
 path('basquet/add/', views.BasquetCreateView.as_view(), name='basquet-add'),
 path('basquet/<int:pk>/detail', views.BasquetDetailView.as_view(), name='basquet-detail'),

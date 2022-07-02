@@ -16,48 +16,39 @@ def in_tenistas(request, nombre: str, numeroDeSocio: int, fechaDeIngreso: str, e
         template_name="app_tenistas/in_tenistas.html"
     )
 
-def tenistas(request):
-    tenis = Tenis.objects.all()
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-    context_dict = {
-        'tenis': tenis
-    }
 
-    return render(
-        request=request,
-        context=context_dict,
-        template_name="app_tenistas/tenistas.html"
-    )
+class TenisListView(ListView):
+    model = Tenis
+    template_name = "app_tenistas/tenis_list.html"
 
-def tenis_forms_django(request):
-    if request.method == 'POST':
-        tenis_form = TenisForm(request.POST)
-        if tenis_form.is_valid():
-            data = tenis_form.cleaned_data
-            tenis = Tenis(
-                nombre=data['nombre'], 
-            numeroDeSocio=data['numeroDeSocio'], 
-            fechaDeIngreso=data['fechaDeIngreso'],
-            email=data['email'],
-             )
-            tenis.save()
 
-            tenis = Tenis.objects.all()
-            context_dict = {
-                'tenis': tenis
-            }
-            return render(
-                request=request,
-                context=context_dict,
-                template_name="app_tenistas/tenistas.html"
-            )
+class TenisDetailView(DetailView):
+    model = Tenis
+    template_name = "app_tenistas/tenis_detail.html"
 
-    tenis_form = TenisForm(request.POST)
-    context_dict = {
-        'tenis_form': tenis_form
-    }
-    return render(
-        request=request,
-        context=context_dict,
-        template_name='app_tenistas/tenis_forms_django.html'
-    )
+
+class TenisCreateView(CreateView):
+    model = Tenis
+    # template_name = "app_coder/course_form.html"
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('tenis-list')
+    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+
+
+class TenisUpdateView(UpdateView):
+    model = Tenis
+    # template_name = "app_coder/course_form.html"
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('tenis-list')
+    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+
+
+class TenisDeleteView(DeleteView):
+    model = Tenis
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('tenis-list')    

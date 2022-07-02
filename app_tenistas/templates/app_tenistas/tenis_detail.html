@@ -1,0 +1,10 @@
+{% extends "app_home/index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<h2>Detalle de tenista</h2>
+<hr></hr>
+<p><h3>Futbolista: {{tenis.nombre}}</h3></p>
+
+<p><a class="btn2 btn-primary" href="{% url 'tenis-list' %}">Regresar a la lista de cursos</a></p>
+{% endblock %}
