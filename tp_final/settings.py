@@ -129,15 +129,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-<<<<<<< HEAD
-=======
 
-import dj_database_url  
-db_from_env = dj_database_url.config(conn_max_age=500)  
-DATABASES['default'].update(db_from_env)
 
-STATICFILES_DIRS = (  os.path.join(BASE_DIR, 'static'),)
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
->>>>>>> 7e770c93849f3b2ed94f09db0ceb69554be56051
