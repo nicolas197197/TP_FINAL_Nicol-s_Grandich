@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from app_futbolistas.models import Futbol
 from app_futbolistas.forms import FutbolForm
+from django.forms.models import model_to_dict
 
 
 def in_futbolistas(request, nombre: str, numeroDeSocio: int, fechaDeIngreso: str, email: str):
@@ -16,48 +17,40 @@ def in_futbolistas(request, nombre: str, numeroDeSocio: int, fechaDeIngreso: str
         template_name="app_futbolistas/in_futbolistas.html"
     )
 
-def futbolistas(request):
-    futbol = Futbol.objects.all()
 
-    context_dict = {
-        'futbol': futbol
-    }
+from django.urls import reverse_lazy
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-    return render(
-        request=request,
-        context=context_dict,
-        template_name="app_futbolistas/futbolistas.html"
-    )
 
-def futbol_forms_django(request):
-    if request.method == 'POST':
-        futbol_form = FutbolForm(request.POST)
-        if futbol_form.is_valid():
-            data = futbol_form.cleaned_data
-            futbol = Futbol(
-                nombre=data['nombre'], 
-            numeroDeSocio=data['numeroDeSocio'], 
-            fechaDeIngreso=data['fechaDeIngreso'],
-            email=data['email'],
-             )
-            futbol.save()
+class FutbolListView(ListView):
+    model = Futbol
+    template_name = "app_futbolistas/futbol_list.html"
 
-            futbol = Futbol.objects.all()
-            context_dict = {
-                'futbol': futbol
-            }
-            return render(
-                request=request,
-                context=context_dict,
-                template_name="app_futbolistas/futbolistas.html"
-            )
 
-    futbol_form = FutbolForm(request.POST)
-    context_dict = {
-        'futbol_form': futbol_form
-    }
-    return render(
-        request=request,
-        context=context_dict,
-        template_name='app_futbolistas/futbol_forms_django.html'
-    )
+class FutbolDetailView(DetailView):
+    model = Futbol
+    template_name = "app_futbolistas/futbol_detail.html"
+
+
+class FutbolCreateView(CreateView):
+    model = Futbol
+    # template_name = "app_coder/course_form.html"
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('futbol-list')
+    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+
+
+class FutbolUpdateView(UpdateView):
+    model = Futbol
+    # template_name = "app_coder/course_form.html"
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('futbol-list')
+    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+
+
+class FutbolDeleteView(DeleteView):
+    model = Futbol
+    # success_url = "/app_coder/courses"
+    success_url = reverse_lazy('futbol-list')    
