@@ -6,6 +6,9 @@ from django.db.models import Q
 from app_user.models import Avatar
 from app_user.forms import AvatarForm
 
+def nosotros(request):
+    return render(request,"app_home/nosotros.html")
+
 def index(request):
     avatar_ctx = get_avatar_url_ctx(request)
     context_dict = {**avatar_ctx}

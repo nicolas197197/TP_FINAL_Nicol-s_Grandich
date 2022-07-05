@@ -2,9 +2,14 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Detalle de futbolista</h2>
+<h2>Detalle del futbolista</h2>
 <hr></hr>
-<p><h3>Futbolista: {{futbol.nombre}}</h3></p>
+<p><h3>Nombre: {{futbol.nombre}}</h3></p>
+<p><h3>Apellido: {{futbol.apellido}}</h3></p>
+<p><h3>N° de asociado: {{futbol.numeroDeSocio}}</h3></p>
+<p><h3>Fecha de ingreso: {{futbol.fechaDeIngreso}}</h3></p>
+<p><h3>Email: {{futbol.email}}</h3></p>
+<p><h3>Dato adicional: {{futbol.descripcion}}</h3></p>
 
-<p><a class="btn2 btn-primary" href="{% url 'futbol-list' %}">Regresar a la lista de cursos</a></p>
+<p><a class="btn2 btn-primary" href="{% url 'futbol-list' %}">Regresar al listado completo</a></p>
 {% endblock %}

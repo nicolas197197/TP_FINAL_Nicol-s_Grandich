@@ -5,7 +5,7 @@
 <h2>Eliminar futbolista</h2>
 <hr></hr>
 
-<p>Estás seguro de eliminar el futbolista: {{ futbol.nombre }}?</p>
+<p>Estás seguro de eliminar el futbolista: {{ futbol.nombre }} {{ futbol.apellido }}?</p>
 
 <form action="" method="POST">
     {% csrf_token %}

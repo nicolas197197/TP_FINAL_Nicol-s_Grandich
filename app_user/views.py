@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
 from app_user.forms import UserRegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from app_user.forms import UserRegisterForm, UserEditForm, AvatarForm
 from django.forms.models import model_to_dict
@@ -84,6 +83,7 @@ def user_update(request):
         template_name="app_user/user_form.html",
     )     
 
+@login_required
 def avatar_load(request):
     if request.method == 'POST':
         form = AvatarForm(request.POST, request.FILES)

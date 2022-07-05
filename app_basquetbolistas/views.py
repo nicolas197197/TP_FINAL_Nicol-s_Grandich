@@ -2,8 +2,8 @@ from django.shortcuts import render
 from app_basquetbolistas.models import Basquet
 from app_basquetbolistas.forms import BasquetForm
 
-def in_basquetbolistas(request, nombre: str, numeroDeSocio: int, fechaDeIngreso: str, email: str):
-    basquet = Basquet(nombre=nombre, numeroDeSocio=numeroDeSocio, fechaDeIngreso=fechaDeIngreso, email=email)
+def in_basquetbolistas(request, nombre: str, apellido: str, numeroDeSocio: int, fechaDeIngreso: str, email: str):
+    basquet = Basquet(nombre=nombre, apellido=apellido, numeroDeSocio=numeroDeSocio, fechaDeIngreso=fechaDeIngreso, email=email)
     basquet.save() # save into the DB
 
     context_dict = {
@@ -30,14 +30,14 @@ class BasquetListView(ListView):
 class BasquetDetailView(DetailView):
     model = Basquet
     template_name = "app_basquetbolistas/basquet_detail.html"
-
+    
 
 class BasquetCreateView(CreateView):
     model = Basquet
     # template_name = "app_coder/course_form.html"
     # success_url = "/app_coder/courses"
     success_url = reverse_lazy('basquet-list')
-    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+    fields = ['nombre', 'apellido', 'numeroDeSocio', 'fechaDeIngreso', 'email', 'descripcion']
 
 
 class BasquetUpdateView(UpdateView):
@@ -45,7 +45,7 @@ class BasquetUpdateView(UpdateView):
     # template_name = "app_coder/course_form.html"
     # success_url = "/app_coder/courses"
     success_url = reverse_lazy('basquet-list')
-    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+    fields = ['nombre', 'apellido', 'numeroDeSocio', 'fechaDeIngreso', 'email', 'descripcion']
 
 
 class BasquetDeleteView(DeleteView):

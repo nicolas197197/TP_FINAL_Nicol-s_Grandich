@@ -2,10 +2,12 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Lista de basquetbolistas</h2>
-<a class="card_custom" href="{% url 'basquet-add' %}">Crear nuevo basquetbolista</a>
+<h2>Lista de basquetbolistas registrados</h2>
+<a class="card_custom" href="{% url 'basquet-add' %}">Registrar nuevo basquetbolista</a>
 <hr></hr>
 <ul>
+    
+    {% if basquet_list %}
     {% for basquet in basquet_list %}
     <li>
         {{basquet}}
@@ -23,7 +25,12 @@
         </a>
         )
     </li>
+
     {% endfor %}
+
+    {% else %}
+    <p>NO HAY REGISTRO</p>
+    {% endif %}
 </ul>
 
 {% endblock %}

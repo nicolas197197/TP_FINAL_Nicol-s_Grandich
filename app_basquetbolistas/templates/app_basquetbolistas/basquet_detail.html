@@ -2,9 +2,14 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Detalle de basquetbolista</h2>
+<h2>Detalle del basquetbolista</h2>
 <hr></hr>
-<p><h3>Basquetbolista: {{basquet.nombre}}</h3></p>
+<p><h3>Nombre: {{basquet.nombre}}</h3></p>
+<p><h3>Apellido: {{basquet.apellido}}</h3></p>
+<p><h3>N° de asociado: {{basquet.numeroDeSocio}}</h3></p>
+<p><h3>Fecha de ingreso: {{basquet.fechaDeIngreso}}</h3></p>
+<p><h3>Email: {{basquet.email}}</h3></p>
+<p><h3>Dato adicional: {{basquet.descripcion}}</h3></p>
 
-<p><a class="btn2 btn-primary" href="{% url 'basquet-list' %}">Regresar a la lista de cursos</a></p>
+<p><a class="btn2 btn-primary" href="{% url 'basquet-list' %}">Regresar al listado completo</a></p>
 {% endblock %}

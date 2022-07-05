@@ -3,8 +3,8 @@ from app_tenistas.models import Tenis
 from app_tenistas.forms import TenisForm
 
 
-def in_tenistas(request, nombre: str, numeroDeSocio: int, fechaDeIngreso: str, email: str):
-    tenis = Tenis(nombre=nombre, numeroDeSocio=numeroDeSocio, fechaDeIngreso=fechaDeIngreso, email=email)
+def in_tenistas(request, nombre: str, apellido: str, numeroDeSocio: int, fechaDeIngreso: str, email: str):
+    tenis = Tenis(nombre=nombre, apellido=apellido, numeroDeSocio=numeroDeSocio, fechaDeIngreso=fechaDeIngreso, email=email)
     tenis.save() # save into the DB
 
     context_dict = {
@@ -37,7 +37,7 @@ class TenisCreateView(CreateView):
     # template_name = "app_coder/course_form.html"
     # success_url = "/app_coder/courses"
     success_url = reverse_lazy('tenis-list')
-    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+    fields = ['nombre', 'apellido', 'numeroDeSocio', 'fechaDeIngreso', 'email']
 
 
 class TenisUpdateView(UpdateView):
@@ -45,7 +45,7 @@ class TenisUpdateView(UpdateView):
     # template_name = "app_coder/course_form.html"
     # success_url = "/app_coder/courses"
     success_url = reverse_lazy('tenis-list')
-    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+    fields = ['nombre', 'apellido', 'numeroDeSocio', 'fechaDeIngreso', 'email']
 
 
 class TenisDeleteView(DeleteView):

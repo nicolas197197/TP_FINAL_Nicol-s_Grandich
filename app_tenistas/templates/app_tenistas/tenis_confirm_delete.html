@@ -5,7 +5,7 @@
 <h2>Eliminar tenista</h2>
 <hr></hr>
 
-<p>Estás seguro de eliminar el tenista: {{ tenis.nombre }}?</p>
+<p>Estás seguro de eliminar el tenista: {{ tenis.nombre }} {{ tenis.apellido }}?</p>
 
 <form action="" method="POST">
     {% csrf_token %}

@@ -2,9 +2,14 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Detalle de tenista</h2>
+<h2>Detalle del tenista</h2>
 <hr></hr>
-<p><h3>Futbolista: {{tenis.nombre}}</h3></p>
+<p><h3>Nombre: {{tenis.nombre}}</h3></p>
+<p><h3>Apellido: {{tenis.apellido}}</h3></p>
+<p><h3>N° de asociado: {{tenis.numeroDeSocio}}</h3></p>
+<p><h3>Fecha de ingreso: {{tenis.fechaDeIngreso}}</h3></p>
+<p><h3>Email: {{tenis.email}}</h3></p>
+<p><h3>Dato adicional: {{tenis.descripcion}}</h3></p>
 
-<p><a class="btn2 btn-primary" href="{% url 'tenis-list' %}">Regresar a la lista de cursos</a></p>
+<p><a class="btn2 btn-primary" href="{% url 'tenis-list' %}">Regresar al listado completo</a></p>
 {% endblock %}

@@ -4,8 +4,8 @@ from app_futbolistas.forms import FutbolForm
 from django.forms.models import model_to_dict
 
 
-def in_futbolistas(request, nombre: str, numeroDeSocio: int, fechaDeIngreso: str, email: str):
-    futbol = Futbol(nombre=nombre, numeroDeSocio=numeroDeSocio, fechaDeIngreso=fechaDeIngreso, email=email)
+def in_futbolistas(request, nombre: str, apellido: str, numeroDeSocio: int, fechaDeIngreso: str, email: str):
+    futbol = Futbol(nombre=nombre, apellido=apellido, numeroDeSocio=numeroDeSocio, fechaDeIngreso=fechaDeIngreso, email=email)
     futbol.save() # save into the DB
 
     context_dict = {
@@ -39,7 +39,7 @@ class FutbolCreateView(CreateView):
     # template_name = "app_coder/course_form.html"
     # success_url = "/app_coder/courses"
     success_url = reverse_lazy('futbol-list')
-    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+    fields = ['nombre', 'apellido', 'numeroDeSocio', 'fechaDeIngreso', 'email']
 
 
 class FutbolUpdateView(UpdateView):
@@ -47,7 +47,7 @@ class FutbolUpdateView(UpdateView):
     # template_name = "app_coder/course_form.html"
     # success_url = "/app_coder/courses"
     success_url = reverse_lazy('futbol-list')
-    fields = ['nombre', 'numeroDeSocio', 'fechaDeIngreso', 'email']
+    fields = ['nombre', 'apellido', 'numeroDeSocio', 'fechaDeIngreso', 'email']
 
 
 class FutbolDeleteView(DeleteView):

@@ -8,6 +8,7 @@ from app_futbolistas.models import Futbol
 class FutbolForm(forms.Form):
     numeroDeSocio = forms.IntegerField(label='Numero de socio')
     nombre=forms.CharField(max_length=40, min_length=1, label='Nombre')
+    apellido=forms.CharField(max_length=40, min_length=1, label='Apellido')
     fechaDeIngreso = forms.DateField(
         label='Fecha de inscripción',
         widget=forms.TextInput(attrs={'placeholder': 'yyyy-mm-dd'})) 

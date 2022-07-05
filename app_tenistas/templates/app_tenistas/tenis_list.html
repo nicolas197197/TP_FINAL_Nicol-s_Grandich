@@ -2,10 +2,13 @@
 {% load static %}
 {% block contenidoQueCambia %}
 
-<h2>Lista de tenistas</h2>
-<a class="card_custom" href="{% url 'tenis-add' %}">Crear nuevo basquetbolista</a>
+<h2>Lista de tenistas registrados</h2>
+<a class="card_custom" href="{% url 'tenis-add' %}">Registrar nuevo tenista</a>
 <hr></hr>
 <ul>
+    
+
+    {% if tenis_list %}
     {% for tenis in tenis_list %}
     <li>
         {{tenis}}
@@ -24,6 +27,10 @@
         )
     </li>
     {% endfor %}
+
+    {% else %}
+    <p>NO HAY REGISTRO</p>
+    {% endif %}
 </ul>
 
 {% endblock %}
